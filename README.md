@@ -9,6 +9,10 @@ TimeToNextAlarm is a minimalistic Android widget designed to help you keep track
 - **Tap to Update**: A simple tap on the widget refreshes the time left until the next alarm and updates the theme to reflect any changes in your system's color scheme.
 - **Compatibility**: Designed for devices running Android 13 (API 33) and above, taking full advantage of the latest Android features and design guidelines.
 
+## Download
+
+Click on Release section from this Github repo, and download the latest release apk. Once downloaded, make sure to enable "Install from Unknown Sources" on your Android device. Please do this only if you know what that means and what you are doing. 
+
 ## Usage
 
 To add the TimeToNextAlarm widget to your home screen:
