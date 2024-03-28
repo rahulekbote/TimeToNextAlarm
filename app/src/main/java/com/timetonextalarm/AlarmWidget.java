@@ -4,7 +4,9 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -16,6 +18,8 @@ import androidx.annotation.RequiresApi;
 import java.util.Locale;
 
 public class AlarmWidget extends AppWidgetProvider {
+
+    public static final String ACTION_UPDATE_CLICK = "com.timetonextalarm.action.UPDATE_CLICK";
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -29,6 +33,22 @@ public class AlarmWidget extends AppWidgetProvider {
             updateAppWidget(context, appWidgetManager, appWidgetId, remainingTime);
         }
     }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+
+        // Check for your custom click action
+        if (ACTION_UPDATE_CLICK.equals(intent.getAction())) {
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            ComponentName thisWidget = new ComponentName(context, AlarmWidget.class);
+            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+
+            // Force an update on the widget
+            onUpdate(context, appWidgetManager, appWidgetIds);
+        }
+    }
+
 
     private String calculateTimeUntilAlarm(long alarmTime) {
         if (alarmTime <= 0) {
@@ -53,6 +73,16 @@ public class AlarmWidget extends AppWidgetProvider {
 
         // Set the text
         views.setTextViewText(R.id.appwidget_text, remainingTime);
+
+
+        // Setup an intent that will broadcast your custom action
+        Intent intent = new Intent(context, AlarmWidget.class);
+        intent.setAction(ACTION_UPDATE_CLICK);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        // Set the click listener to the root of your widget layout
+        views.setOnClickPendingIntent(R.id.widget_background, pendingIntent); // Ensure R.id.widget_background is clickable in your layout
+
 
         // Dynamically set background and text color if above Android 12
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
