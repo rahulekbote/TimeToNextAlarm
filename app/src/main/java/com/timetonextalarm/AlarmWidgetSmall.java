@@ -17,7 +17,7 @@ import androidx.annotation.RequiresApi;
 
 import java.util.Locale;
 
-public class AlarmWidget extends AppWidgetProvider {
+public class AlarmWidgetSmall extends AppWidgetProvider {
 
     public static final String ACTION_UPDATE_CLICK = "com.timetonextalarm.action.UPDATE_CLICK";
 
@@ -41,7 +41,7 @@ public class AlarmWidget extends AppWidgetProvider {
         // Check for your custom click action
         if (ACTION_UPDATE_CLICK.equals(intent.getAction())) {
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-            ComponentName thisWidget = new ComponentName(context, AlarmWidget.class);
+            ComponentName thisWidget = new ComponentName(context, AlarmWidgetSmall.class);
             int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
 
             // Force an update on the widget
@@ -64,7 +64,7 @@ public class AlarmWidget extends AppWidgetProvider {
         long hours = diff / (1000 * 60 * 60);
         long minutes = (diff / (1000 * 60)) % 60;
 
-        return String.format(Locale.US, "Next Alarm: %02dh %02dm", hours, minutes);
+        return String.format(Locale.US, "Alarm %02dh %02dm", hours, minutes);
     }
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
@@ -76,7 +76,7 @@ public class AlarmWidget extends AppWidgetProvider {
 
 
         // Setup an intent that will broadcast your custom action
-        Intent intent = new Intent(context, AlarmWidget.class);
+        Intent intent = new Intent(context, AlarmWidgetSmall.class);
         intent.setAction(ACTION_UPDATE_CLICK);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TimeToNextAlarm</string>
     <string name="appwidget_text">Time to Next Alarm</string>
+    <string name="tap_to_refresh">Tap to Refresh</string>
 </resources>

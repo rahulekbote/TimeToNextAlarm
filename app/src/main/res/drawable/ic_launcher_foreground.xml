@@ -4,30 +4,59 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
     <group>
+        <!-- Background circle -->
         <path
-            android:fillColor="#FFBB86FC"
-            android:pathData="M54,15
-                             m-39,39
-                             a39,39 0 1,1 78,0
-                             a39,39 0 1,1 -78,0" />
+            android:fillColor="#8D6E63"
+        android:pathData="M54,15
+        m-39,39
+        a39,39 0 1,1 78,0
+        a39,39 0 1,1 -78,0"/>
+        <!-- Foreground arc for the countdown timer, can represent progress -->
         <path
-            android:fillColor="#FF3700B3"
-            android:pathData="M54,54
-                             L54,15
-                             A39,39 0 0,1 89.25,33.5
-                             L54,54
-                             z" />
+            android:fillColor="#D7CCC8"
+        android:pathData="M54,54
+        L54,15
+        A39,39 0 0,1 89.25,33.5
+        L54,54
+        z"/>
+
+        <!-- Top marker -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M54,19
+                             l-1,0
+                             l1,-4
+                             l1,4
+                             l-1,0" />
+        <!-- Right marker -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M85,54
+                             l0,-1
+                             l4,1
+                             l-4,1
+                             l0,-1" />
+        <!-- Bottom marker -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M54,89
+                             l-1,0
+                             l1,4
+                             l1,-4
+                             l-1,0" />
+        <!-- Left marker -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M23,54
+                             l0,-1
+                             l-4,1
+                             l4,1
+                             l0,-1" />
+        <!-- Clock hand indicating a specific time, e.g., 15 minutes (1/4 of an hour) -->
         <path
             android:strokeWidth="2"
             android:strokeColor="#FFFFFF"
             android:pathData="M54,54
-                             m0,-39
-                             l0,20" />
-        <path
-            android:strokeWidth="2"
-            android:strokeColor="#FFFFFF"
-            android:pathData="M101,42
-                             m-26,0
-                             l14.14,-8.3" />
+                             L54,24"/>
     </group>
 </vector>
