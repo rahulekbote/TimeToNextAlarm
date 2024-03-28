@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="widget_text_size">24sp</dimen>
+</resources>
