@@ -39,3 +39,6 @@ We welcome contributions from the community! Whether it's a feature suggestion, 
 
 TimeToNextAlarm is open-source software licensed under the MIT license. See the LICENSE file for more information.
 
+## Note
+
+This app has been tested on Google Pixel 8 Pro running on Android 14. Not tested for multi-device compatability. 
